@@ -1,7 +1,10 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
+use App\Models\Registration;
 
 class RegisterController extends Controller
 {
@@ -24,5 +27,12 @@ class RegisterController extends Controller
         return response()->json([
             'message' => 'Registration successful!'
         ], 201);
+    }
+
+    public function getRegistrations()
+    {
+        $registrations = Registration::all();
+
+        return response()->json($registrations, 200);
     }
 }
